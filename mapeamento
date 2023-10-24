@@ -1,0 +1,7 @@
+Item (nome, medida[Enum*])
+ItemVenda(venda, item, quantidade, valorUnitario, subTotal)
+Venda(dtVenda, Itens, valorTotal)
+Compra(dtCompra, Itens, valorTotal)
+Balanco(dtIni, dtFim, Vendas, Compras, Saldo)
+Caixa(caixaFluxo, caixaEmergencia, caixaInvestimento, somaTotalBalancos)
+SaidaCaixa(dtSaida, valor, tipoSaida)

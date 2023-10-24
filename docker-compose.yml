@@ -13,7 +13,7 @@ services:
         depends_on:
             - redis
         networks:
-            - api_financeiro
+            - api-financeiro
 
     # nginx
     nginx:
@@ -25,12 +25,12 @@ services:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
-            - api_financeiro
+            - api-financeiro
 
     # db mysql
     db:
         image: mysql:5.7.22
-        platform: linux/x86_64
+        #platform: linux/x86_64
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE:-laravel}
@@ -42,14 +42,14 @@ services:
         ports:
             - "3388:3306"
         networks:
-            - api_financeiro
+            - api-financeiro
 
     # redis
     redis:
         image: redis:latest
         networks:
-            - api_financeiro
+            - api-financeiro
 
 networks:
-    api_financeiro:
+    api-financeiro:
         driver: bridge

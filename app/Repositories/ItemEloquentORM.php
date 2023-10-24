@@ -25,7 +25,7 @@ class ItemEloquentORM implements Contracts\ItemRepositoryInterface
             ->where(function ($query) use ($filter) {
                 if ($filter) {
                     $query->where('name', $filter);
-                    $query->orWhere('value', $filter);
+                    $query->orWhere('measure', $filter);
                 }
             })
             ->paginate($totalPerPage, ['*'], 'page', $page);
@@ -40,7 +40,7 @@ class ItemEloquentORM implements Contracts\ItemRepositoryInterface
             ->where(function ($query) use ($filter) {
                 if ($filter) {
                     $query->where('name', $filter);
-                    $query->orWhere('value', $filter);
+                    $query->orWhere('measure', $filter);
                 }
             })
             ->get()
