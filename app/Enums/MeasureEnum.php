@@ -20,4 +20,14 @@ enum MeasureEnum: string
 
         throw new \ValueError("$status is not a valid");
     }
+
+    public static function toArray()
+    {
+        return [
+            self::G,
+            self::KG,
+            self::L,
+            self::ML
+        ];
+    }
 }

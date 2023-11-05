@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Enums\MeasureEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ItemResource;
 use App\Models\Item;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Enum;
 
 class ItemController extends Controller
 {
@@ -30,7 +28,7 @@ class ItemController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:items',
-            'measure' => [new Enum(MeasureEnum::class)],
+            'measure' => 'required|in:'.implode(',', ['G', 'KG', 'ML', 'L']),
         ]);
 
         if ($validator->fails()) {
@@ -60,8 +58,7 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:items',
-            'measure' => [new Enum(MeasureEnum::class)],
+            'measure' => 'required|in:'.implode(',', ['G', 'KG', 'ML', 'L']),
         ]);
 
         if ($validator->fails()) {
